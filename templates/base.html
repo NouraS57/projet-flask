@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieLens Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">🎬 MovieLens Dashboard</h1>
+            <ul class="nav-links">
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/top">Top Films</a></li>
+                <li><a href="/genre">Par Genre</a></li>
+                <li><a href="/reco">Recommandations</a></li>
+                <li><a href="/eda">EDA</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        {% if page == 'home' %}
+        <div class="hero">
+            <h2>Bienvenue sur le Dashboard MovieLens</h2>
+            <p>Explorez les meilleurs films, analysez par genre et obtenez des recommandations personnalisées.</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>⭐ Top Films</h3>
+                    <p>Découvrez les films les mieux notés et les plus populaires</p>
+                    <a href="/top" class="btn">Voir le classement</a>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>🎭 Par Genre</h3>
+                    <p>Explorez les films par catégorie</p>
+                    <a href="/genre" class="btn">Explorer les genres</a>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>🎯 Recommandations</h3>
+                    <p>Trouvez des films similaires à vos préférés</p>
+                    <a href="/reco" class="btn">Obtenir des recommandations</a>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>📊 Analyse Exploratoire (EDA)</h3>
+                    <p>Visualisez les statistiques globales, les genres dominants et les films les mieux notés</p>
+                    <a href="/eda" class="btn">Voir l'EDA</a>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        {% block content %}{% endblock %}
+        {% endif %}
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 MovieLens Dashboard | Projet Pandas + Flask</p>
+        </div>
+    </footer>
+</body>
+</html>

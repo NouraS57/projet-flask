@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-header">
+    <h2>📊 Analyse Exploratoire (EDA)</h2>
+    <p>Visualisez les statistiques et insights de votre dataset MovieLens</p>
+</div>
+
+<div class="container eda-section">
+    <!-- Stats générales -->
+    <div class="stats-grid">
+        <div class="stat-box">
+            <div class="stat-icon">🎬</div>
+            <div class="stat-value">{{ stats.num_movies }}</div>
+            <div class="stat-label">Films</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-icon">👤</div>
+            <div class="stat-value">{{ stats.num_users }}</div>
+            <div class="stat-label">Utilisateurs</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-icon">⭐</div>
+            <div class="stat-value">{{ stats.num_ratings }}</div>
+            <div class="stat-label">Notes</div>
+        </div>
+    </div>
+
+    <!-- Top genres -->
+    <div class="feature-card">
+        <h3>Top 10 des genres</h3>
+        <ul>
+            {% for genre, count in top_genres.items() %}
+            <li>{{ genre }} : {{ count }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Top films -->
+    <div class="feature-card">
+        <h3>Top 10 des films (note moyenne)</h3>
+        <ul>
+            {% for title, avg in top_movies.items() %}
+            <li>{{ title }} : {{ "%.2f"|format(avg) }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

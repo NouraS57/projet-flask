@@ -1,0 +1,560 @@
+/* ========================================
+   RESET ET STYLES DE BASE
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ========================================
+   NAVIGATION
+   ======================================== */
+
+.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    color: #667eea;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #667eea;
+}
+
+/* ========================================
+   MAIN CONTENT
+   ======================================== */
+
+main {
+    padding: 3rem 0;
+    min-height: calc(100vh - 200px);
+}
+
+/* ========================================
+   HERO SECTION (PAGE D'ACCUEIL)
+   ======================================== */
+
+.hero {
+    text-align: center;
+    color: white;
+    padding: 2rem 0;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+}
+
+/* ========================================
+   FEATURE GRID
+   ======================================== */
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.feature-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #667eea;
+}
+
+.feature-card p {
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.feature-card ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.feature-card li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+/* ========================================
+   PAGE HEADER
+   ======================================== */
+
+.page-header {
+    text-align: center;
+    color: white;
+    margin-bottom: 3rem;
+}
+
+.page-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.page-header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* ========================================
+   TOP FILMS PAGE
+   ======================================== */
+
+.top-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 2rem;
+}
+
+.top-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.top-card h3 {
+    color: #667eea;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: #999;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ========================================
+   TABLES
+   ======================================== */
+
+.movie-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.movie-table thead {
+    background: #f8f9fa;
+}
+
+.movie-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: #667eea;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.movie-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.movie-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.rank {
+    font-weight: bold;
+    color: #667eea;
+    font-size: 1.2rem;
+}
+
+.title {
+    font-weight: 500;
+}
+
+.rating {
+    color: #ffa500;
+    font-weight: 600;
+}
+
+.count {
+    color: #666;
+}
+
+/* ========================================
+   FORMS ET CARDS
+   ======================================== */
+
+.genre-section,
+.reco-section,
+.eda-section {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-card,
+.result-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.form-card h3,
+.result-card h3 {
+    color: #667eea;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+/* ========================================
+   STATS GRID (EDA PAGE)
+   ======================================== */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-box {
+    text-align: center;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 15px;
+    color: white;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.genre-description {
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    line-height: 1.6;
+}
+
+/* ========================================
+   RECOMMENDATIONS
+   ======================================== */
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.model-badge {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.cosine-badge {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.model-info {
+    background: #e6f7ff;
+    border-left: 4px solid #1890ff;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.model-info p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.recommendations-list {
+    margin-bottom: 2rem;
+}
+
+.reco-item {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    transition: transform 0.3s;
+}
+
+.reco-item:hover {
+    transform: translateX(5px);
+    background: #e9ecef;
+}
+
+.reco-rank {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-right: 1.5rem;
+    flex-shrink: 0;
+}
+
+.reco-content {
+    flex: 1;
+}
+
+.reco-content h4 {
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.reco-score {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.score-label {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.score-value {
+    color: #667eea;
+    font-weight: bold;
+}
+
+.score-bar {
+    width: 100%;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    overflow: hidden;
+}
+
+.score-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    transition: width 0.5s ease;
+    width: 0;
+}
+
+.cosine-fill {
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+}
+
+.reco-note {
+    padding: 1.5rem;
+    background: #fff3cd;
+    border-left: 4px solid #ffa500;
+    border-radius: 8px;
+}
+
+.reco-note p {
+    line-height: 1.6;
+    color: #856404;
+    margin: 0;
+}
+
+/* ========================================
+   ERROR CARD
+   ======================================== */
+
+.error-card {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 10px;
+    padding: 1rem;
+    color: #721c24;
+    margin-bottom: 2rem;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+footer {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem 0;
+    text-align: center;
+    color: #666;
+    margin-top: 3rem;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+    .top-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero h2 {
+        font-size: 2rem;
+    }
+    
+    .page-header h2 {
+        font-size: 2rem;
+    }
+    
+    .nav-links {
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .movie-table {
+        font-size: 0.9rem;
+    }
+    
+    .movie-table th,
+    .movie-table td {
+        padding: 0.5rem;
+    }
+    
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}

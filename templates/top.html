@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-header">
+    <h2>🏆 Top Films</h2>
+    <p>Les meilleurs films selon les utilisateurs MovieLens</p>
+</div>
+
+<div class="top-section">
+    <div class="top-card">
+        <h3>⭐ Top 10 - Par Note Moyenne</h3>
+        <p class="subtitle">Films avec au moins 50 votes</p>
+        
+        <table class="movie-table">
+            <thead>
+                <tr>
+                    <th>Rang</th>
+                    <th>Film</th>
+                    <th>Note Moyenne</th>
+                    <th>Nb de Votes</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for movie in top_rating %}
+                <tr>
+                    <td class="rank">{{ loop.index }}</td>
+                    <td class="title">{{ movie.title }}</td>
+                    <td class="rating">{{ "%.2f"|format(movie.avg_rating) }} / 5</td>
+                    <td class="count">{{ movie.num_ratings }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="top-card">
+        <h3>🔥 Top 10 - Par Popularité</h3>
+        <p class="subtitle">Films les plus notés</p>
+        
+        <table class="movie-table">
+            <thead>
+                <tr>
+                    <th>Rang</th>
+                    <th>Film</th>
+                    <th>Nb de Votes</th>
+                    <th>Note Moyenne</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for movie in top_popularity %}
+                <tr>
+                    <td class="rank">{{ loop.index }}</td>
+                    <td class="title">{{ movie.title }}</td>
+                    <td class="count">{{ movie.num_ratings }}</td>
+                    <td class="rating">{{ "%.2f"|format(movie.avg_rating) }} / 5</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

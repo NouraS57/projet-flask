@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-header">
+    <h2>🎯 Système de Recommandation</h2>
+    <p>Trouvez des films similaires à vos préférés</p>
+</div>
+
+<div class="reco-section">
+    <!-- Formulaire de sélection -->
+    <div class="form-card">
+        <h3>Choisissez un Film</h3>
+        <form method="POST" action="/reco">
+            <div class="form-group">
+                <label for="movie">Film :</label>
+                <select name="movie" id="movie" class="form-select" required>
+                    <option value="" disabled selected>-- Sélectionnez un film --</option>
+                    {% for m in movies %}
+                    <option value="{{ m }}" {% if selected_movie == m %}selected{% endif %}>{{ m }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Obtenir des Recommandations</button>
+        </form>
+        
+        <div class="model-info">
+            <p><strong>💡 À propos :</strong> Les recommandations sont basées sur la <strong>similarité cosine</strong>, 
+            une méthode robuste qui compare les profils de notation des films.</p>
+        </div>
+    </div>
+
+    <!-- Affichage des erreurs -->
+    {% if error %}
+    <div class="error-card">
+        <p>⚠️ {{ error }}</p>
+    </div>
+    {% endif %}
+
+    <!-- Affichage des recommandations -->
+    {% if recommendations %}
+    <div class="result-card">
+        <div class="result-header">
+            <h3>🎬 Films similaires à : {{ selected_movie }}</h3>
+            <span class="model-badge cosine-badge">Similarité Cosine</span>
+        </div>
+        
+        <div class="recommendations-list">
+            {% for rec in recommendations %}
+            <div class="reco-item">
+                <div class="reco-rank">{{ loop.index }}</div>
+                <div class="reco-content">
+                    <h4>{{ rec.title }}</h4>
+                    <div class="reco-score">
+                        <span class="score-label">Score de similarité :</span>
+                        <span class="score-value">{{ rec.score }}</span>
+                        <div class="score-bar">
+                            <div class="score-fill cosine-fill" data-width="{{ (rec.score|float * 100)|round }}"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="reco-note">
+            <p>
+                <strong>🎯 Comment ça marche ?</strong><br>
+                La <strong>similarité cosine</strong> calcule l'angle entre les vecteurs de notation. 
+                Elle est robuste et fonctionne bien pour trouver des films avec des profils 
+                d'utilisateurs similaires. Un score proche de 1.0 indique une très forte similarité.
+            </p>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+// Animer les barres de progression au chargement
+document.addEventListener('DOMContentLoaded', function() {
+    const scoreFills = document.querySelectorAll('.score-fill');
+    scoreFills.forEach(function(fill) {
+        const width = fill.getAttribute('data-width');
+        setTimeout(function() {
+            fill.style.width = width + '%';
+        }, 100);
+    });
+});
+</script>
+{% endblock %}

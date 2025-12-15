@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-header">
+    <h2>🎭 Analyse par Genre</h2>
+    <p>Explorez les statistiques des films par catégorie</p>
+</div>
+
+<div class="genre-section">
+    <div class="form-card">
+        <h3>Sélectionnez un Genre</h3>
+        
+        <form method="POST" action="/genre">
+            <div class="form-group">
+                <label for="genre">Genre :</label>
+                <select name="genre" id="genre" class="form-select" required>
+                    <option value="">-- Choisir un genre --</option>
+                    {% for g in genres %}
+                    <option value="{{ g }}" {% if selected_genre == g %}selected{% endif %}>
+                        {{ g }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Analyser ce genre</button>
+        </form>
+    </div>
+
+    {% if genre_info %}
+    <div class="result-card">
+        <h3>📊 Statistiques - {{ selected_genre }}</h3>
+        
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-icon">🎬</div>
+                <div class="stat-value">{{ genre_info.num_movies }}</div>
+                <div class="stat-label">Films dans ce genre</div>
+            </div>
+            
+            <div class="stat-box">
+                <div class="stat-icon">⭐</div>
+                <div class="stat-value">{{ "%.2f"|format(genre_info.avg_rating) }}</div>
+                <div class="stat-label">Note moyenne</div>
+            </div>
+            
+            <div class="stat-box">
+                <div class="stat-icon">👥</div>
+                <div class="stat-value">{{ "{:,}".format(genre_info.num_ratings) }}</div>
+                <div class="stat-label">Notes totales</div>
+            </div>
+        </div>
+        
+        <div class="genre-description">
+            <p>
+                Le genre <strong>{{ selected_genre }}</strong> compte 
+                <strong>{{ genre_info.num_movies }}</strong> films différents avec une note 
+                moyenne de <strong>{{ "%.2f"|format(genre_info.avg_rating) }}/5</strong> 
+                basée sur <strong>{{ "{:,}".format(genre_info.num_ratings) }}</strong> évaluations.
+            </p>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
